@@ -2,7 +2,7 @@
 
 A basic video player with pagination and theme mode..
 
- <h2>`Url` -> <h3>hypergrotube.vercel.app</h3></h2>
+ <li>Url -> <h3>https://hypergrotube.vercel.app/</h3></li>
 
  ## *Features*
  <li>Play & Download some short videos</li>
@@ -20,9 +20,12 @@ A basic video player with pagination and theme mode..
 
 
  ### *Get Started...*
- <h2>Clone the repo...</h2>
- <li> git clone </li>
+ <h6>Clone the repo...</h2>
+ <li> git clone https://github.com/amansingh456/hypergrotube.git</li>
 
  <li>cd hypergrotube</li>
  <li>npm i </li>
  <li>npm run start </li>
+
+
+ ## *ThankYou..!*
