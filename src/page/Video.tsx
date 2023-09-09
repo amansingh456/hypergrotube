@@ -24,9 +24,9 @@ const Video: React.FC = () => {
   const { title, pic, name, desc, vidUrl } = state;
 
   return (
-   <Container>
-   <Content>
-     <VideoWrapper>
+   <div className="flex gap-6">
+   <div>
+     <div>
      <iframe
             width={"100%"}
             height={"570px"}
@@ -37,121 +37,64 @@ const Video: React.FC = () => {
             allowFullScreen
             loading="lazy"
           ></iframe>
-     </VideoWrapper>
-     <Title>{title}</Title>
-     <Details>
+     </div>
+     <Title className="text-md font-semibold mt-5 mb-2.5">{title}</Title>
+     <div className="flex items-center justify-between">
        <Info>7,948,154 views • Jun 22, 2022</Info>
-       <Buttons>
-         <Button>
+       <Buttons className="flex gap-5">
+         <button className="flex items-center gap-2 cursor-pointer">
            <AiOutlineLike /> 123
-         </Button>
-         <Button>
+         </button>
+         <button className="flex items-center gap-2 cursor-pointer">
            <AiOutlineDislike /> Dislike
-         </Button>
-         <Button>
+         </button>
+         <button className="flex items-center gap-2 cursor-pointer">
            <BsReplyAll /> Share
-         </Button>
-         <Button>
+         </button>
+         <button className="flex items-center gap-2 cursor-pointer">
            <BiAddToQueue /> Save
-         </Button>
+         </button>
        </Buttons>
-     </Details>
-     <Hr />
-     <Channel>
-       <ChannelInfo>
-         <Image src={pic} />
-         <ChannelDetail>
-           <ChannelName>{name}</ChannelName>
-           <Description>
+     </div>
+     <Hr  className="my-4"  />
+     <div className="flex justify-between">
+       <div className="flex gap-5">
+         <img className="w-12 h-12 rounded-full" alt="h" src={pic} />
+         <ChannelDetail className="flex flex-col">
+           <span className="font-semibold">{name}</span>
+           <p className="text-sm">
             {desc}
-           </Description>
+           </p>
          </ChannelDetail>
-       </ChannelInfo>
-     </Channel>
-     <Hr />
-   </Content>
- </Container>
+       </div>
+     </div>
+     <Hr className="my-4" />
+   </div>
+ </div>
   );
 };
 
 export default Video;
 
 
-const Container = styled.div`
-  display: flex;
-  gap: 24px;
-`;
-
-const Content = styled.div`
-`;
-const VideoWrapper = styled.div``;
-
 const Title = styled.h1`
-  font-size: 18px;
-  font-weight: 400;
-  margin-top: 20px;
-  margin-bottom: 10px;
   color: ${({ theme }) => theme.text};
 `;
 
-const Details = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const Info = styled.span`
   color: ${({ theme }) => theme.textSoft};
 `;
 
 const Buttons = styled.div`
-  display: flex;
-  gap: 20px;
   color: ${({ theme }) => theme.text};
 `;
 
-const Button = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-`;
-
 const Hr = styled.hr`
-  margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 
-const Channel = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ChannelInfo = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-const Image = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`;
-
 const ChannelDetail = styled.div`
-  display: flex;
-  flex-direction: column;
   color: ${({ theme }) => theme.text};
 `;
-
-const ChannelName = styled.span`
-  font-weight: 500;
-`;
-
-
-
-const Description = styled.p`
-  font-size: 14px;
-`;
-
