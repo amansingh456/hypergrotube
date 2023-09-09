@@ -2,7 +2,7 @@
 
 A basic video player with pagination and theme mode..
 
- <li><h3>https://hypergrotube.vercel.app/</h3></li>
+ <h2>https://hypergrotube.vercel.app/</h2>
 
  ## *Features*
  <li>Play & Download some short videos</li>
