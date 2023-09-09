@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme, Theme } from './utils/Theme';
+import { Routes, Route } from 'react-router-dom';
+import Login from './page/Login';
+import Home from './page/Home';
+import Video from './page/Video';
+import Menu from './components/Menu';
+import Navbar from './components/Navbar';
 import './App.css';
+import styled from 'styled-components';
+// import { useTheme } from './provider/ThemeContext';
 
-function App() {
+interface AppProps { }
+
+const App: React.FC<AppProps> = () => {
+  const [darkMode, setDarkMode] = useState(true);
+  // const theme = useTheme()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <ChakraProvider>
+        <div className="flex h-full">
+          <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Main>
+            <Navbar />
+            <div className="p-8">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/video/:id" element={<Video />} />
+              </Routes>
+            </div>
+          </Main>
+        </div>
+      </ChakraProvider>
+    </ThemeProvider>
   );
-}
+};
+
+const Main = styled.div<{ theme: Theme }>`
+  flex: 6;
+  background-color: ${({ theme }) => theme.bg};
+`;
+
+// const Wrapper = styled.div`
+//   padding: 30px 10px;
+// `;
 
 export default App;
