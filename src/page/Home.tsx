@@ -5,12 +5,14 @@ import Card from "../components/Card";
 import { useToast } from "@chakra-ui/react";
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import styled from "styled-components";
+import Loader from "../components/Loader";
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
    const [page, setPage] = useState<number>(1);
    const [allData, setAllData] = useState<any[]>([]);
+   const [loading, setLoading] = useState<boolean>(true);
   
    const toast = useToast();
 
@@ -18,9 +20,13 @@ const Home: React.FC<HomeProps> = () => {
       await axios.get(` https://internship-service.onrender.com/videos?page=${page}`)
          .then((res) => {
             setAllData(res.data.data.posts);
+            setTimeout(()=>{
+               setLoading(false)
+            },1000)
          })
          .catch((err) => {
             console.log(err);
+            setLoading(true)
          });
    };
 
@@ -61,8 +67,9 @@ const Home: React.FC<HomeProps> = () => {
    return (
       <>
          <Container className="grid gap-5 py-5">
-            { allData?.map((item) => <Card key={item.postId} desc={item.submission.description} vidUrl={item.submission.mediaUrl} thumbnail={item.submission.thumbnail} id={item.postId} title={item.submission.title} name={item.creator.handle} pic={item.creator.pic} />)}
+            { !loading && allData?.map((item) => <Card key={item.postId} desc={item.submission.description} vidUrl={item.submission.mediaUrl} thumbnail={item.submission.thumbnail} id={item.postId} title={item.submission.title} name={item.creator.handle} pic={item.creator.pic} />)}
          </Container>
+         {loading && <Loader/>}
          <div className="flex items-center justify-center gap-3 mt-6 sm:mt-8 md:mt-5 lg:mt-5">
             <div onClick={handleLeftArrow} className="px-2 py-1 border border-red-600 text-red-600 rounded-lg font-semibold flex items-center gap-5 text-2xl cursor-pointer">
                <FaLongArrowAltLeft />
