@@ -98,7 +98,7 @@ const Container = styled.div`
   }
   @media all and (min-width: 260px) and (max-width: 651px) {
     grid-template-columns: repeat(1, 1fr);
-    gap: 30px;
+    gap: 32px;
     padding: 0 0px;
   }
 `;
