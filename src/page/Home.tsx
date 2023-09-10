@@ -70,14 +70,14 @@ const Home: React.FC<HomeProps> = () => {
             { !loading && allData?.map((item) => <Card key={item.postId} desc={item.submission.description} vidUrl={item.submission.mediaUrl} thumbnail={item.submission.thumbnail} id={item.postId} title={item.submission.title} name={item.creator.handle} pic={item.creator.pic} />)}
          </Container>
          {loading && <Loader/>}
-         <div className="flex items-center justify-center gap-3 mt-6 sm:mt-8 md:mt-5 lg:mt-5">
-            <div onClick={handleLeftArrow} className="px-2 py-1 border border-red-600 text-red-600 rounded-lg font-semibold flex items-center gap-5 text-2xl cursor-pointer">
+         <div className="flex items-center justify-center gap-5 mt-6 sm:mt-8 md:mt-5 lg:mt-5">
+            <Button onClick={handleLeftArrow} className="px-1 py-1  rounded-lg font-semibold flex items-center gap-5 text-xl cursor-pointer">
                <FaLongArrowAltLeft />
-            </div>
-            <div className="px-2 border-2 border-red-600 text-red-600 rounded-full font-semibold flex items-center gap-5 text-2xl cursor-pointer">{page}</div>
-            <div onClick={handleRightArrow} className="px-2 py-1 border border-red-600 text-red-600 rounded-lg font-semibold flex items-center gap-5 text-2xl cursor-pointer">
+            </Button>
+            <Button className="px-2   rounded-lg font-semibold flex items-center gap-5 text-xl cursor-pointer">{page}</Button>
+            <Button onClick={handleRightArrow} className="px-1 py-1  rounded-lg font-semibold flex items-center gap-5 text-xl cursor-pointer">
                <FaLongArrowAltRight />
-            </div>
+            </Button>
          </div>
       </>
    );
@@ -102,3 +102,13 @@ const Container = styled.div`
     padding: 0 0px;
   }
 `;
+
+const Button = styled.button`
+   color: ${({ theme }) => theme.text};
+   box-shadow: ${({ theme }) => theme.text} 0px 2px 5px;
+   background-color: ${({ theme }) => theme.bgLighter};
+   &:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 5px 15px ${({ theme }) => theme.text};
+  }
+`
