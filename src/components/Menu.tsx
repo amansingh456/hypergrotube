@@ -106,7 +106,7 @@ export default Menu;
 
 const Container = styled.div`
   height: 100%;
-  overflow-y: hidden;
+  overflow-x: hidden;
   flex: 1;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
