@@ -87,6 +87,7 @@ export default Home;
 
 const Container = styled.div`
   grid-template-columns: repeat(4, 1fr);
+  overflow-y: auto !important;
   
   @media all and (min-width: 950px) and (max-width: 1440px) {
     grid-template-columns: repeat(3, 1fr);

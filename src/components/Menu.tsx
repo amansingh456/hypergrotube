@@ -12,7 +12,6 @@ import {
 } from "react-icons/md";
 import { FaHistory, FaMusic } from "react-icons/fa";
 import { RiAccountCircleFill } from "react-icons/ri";
-import { SiFacebookgaming } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { BiSolidUserCheck } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
@@ -32,7 +31,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, setDarkMode }) => {
   useEffect(() => {}, [state]);
 
   return (
-    <Container className="text-sm sticky left-0 top-0">
+    <Container className="text-sm sticky top-0">
       <div className="px-5 py-4">
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="flex items-center gap-1 font-bold mb-6">
@@ -69,7 +68,7 @@ const Menu: React.FC<MenuProps> = ({ darkMode, setDarkMode }) => {
             </button>
           ) : (
             <Link to="/login" style={{ textDecoration: "none" }}>
-              <button className="px-1 py-1 bg-transparent border border-rose-500 text-rose-500 rounded-1 font-semibold text-5 cursor-pointer flex items-center gap-1">
+              <button className="px-1 py-1 pr-2 bg-transparent border border-rose-500 text-rose-500 rounded-1 font-semibold text-5 cursor-pointer flex items-center gap-1">
                 <RiAccountCircleFill />
                 <span className="hiddenu" >SIGN IN</span>
               </button>
@@ -84,10 +83,6 @@ const Menu: React.FC<MenuProps> = ({ darkMode, setDarkMode }) => {
         <Item className="flex items-center justify-normal gap-5 cursor-pointer py-1  text-xl">
           <MdOutlineSportsBasketball />
           <span className="hiddenu">Sports</span>
-        </Item>
-        <Item className="flex items-center justify-normal gap-5 cursor-pointer py-1  text-xl">
-          <SiFacebookgaming />
-          <span className="hiddenu">Gaming</span>
         </Item>
         <Item className="flex items-center justify-normal gap-5 cursor-pointer py-1  text-xl">
           <MdOutlineLiveTv />
@@ -110,6 +105,8 @@ const Menu: React.FC<MenuProps> = ({ darkMode, setDarkMode }) => {
 export default Menu;
 
 const Container = styled.div`
+  height: 100%;
+  overflow-y: hidden;
   flex: 1;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
