@@ -11,13 +11,14 @@ interface CardProps {
   thumbnail: string;
   vidUrl: string;
   desc: string;
+  creatorName:string;
 }
 
-const Card: React.FC<CardProps> = ({ type, id, title, name, pic, thumbnail, vidUrl, desc }) => {
+const Card: React.FC<CardProps> = ({ type, id, title, name, pic, thumbnail, vidUrl, desc, creatorName }) => {
   const navigate = useNavigate();
 
   const handleProceed = () => {
-    navigate(`/video/${id}`, { state: { vidUrl, name, pic, title, desc } });
+    navigate(`/video/${id}`, { state: { vidUrl, name, pic, title, desc, creatorName } });
   };
 
   return (

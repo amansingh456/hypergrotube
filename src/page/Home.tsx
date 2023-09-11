@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = () => {
    const toast = useToast();
 
    const getData = async (arg = {}) => {
-      await axios.get(` https://internship-service.onrender.com/videos?page=${page}`)
+      await axios.get(`https://internship-service.onrender.com/videos?page=${page}`)
          .then((res) => {
             setAllData(res.data.data.posts);
             setTimeout(()=>{
@@ -67,7 +67,7 @@ const Home: React.FC<HomeProps> = () => {
    return (
       <>
          <Container className="grid gap-5 py-5">
-            { !loading && allData?.map((item) => <Card key={item.postId} desc={item.submission.description} vidUrl={item.submission.mediaUrl} thumbnail={item.submission.thumbnail} id={item.postId} title={item.submission.title} name={item.creator.handle} pic={item.creator.pic} />)}
+            { !loading && allData?.map((item) => <Card key={item.postId} desc={item.submission.description} vidUrl={item.submission.mediaUrl} thumbnail={item.submission.thumbnail} id={item.postId} title={item.submission.title} name={item.creator.handle} pic={item.creator.pic} creatorName={item.creator.name} />)}
          </Container>
          {loading && <Loader/>}
          <div className="flex items-center justify-center gap-5 mt-6 sm:mt-8 md:mt-5 lg:mt-5">
