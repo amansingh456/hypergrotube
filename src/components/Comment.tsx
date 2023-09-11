@@ -11,21 +11,22 @@ interface CommentProps {
 
 
 const Comment: React.FC<CommentProps> = ({ pic, creatorName, allComment }) => {
+   console.log(creatorName)
    return (
       <>
          {allComment?.map((cmnt, ind) => {
             return (
-               <Container>
-                  <Avatar src={pic} />
-                  <Details>
-                     <Name>
-                        {creatorName} <DateText>now</DateText>
-                     </Name>
-                     <Text>
+               <div className="flex gap-2 my-7" key={ind}> 
+                  <img src={pic} alt="h" className="w-8 h-8 rounded-full"/>
+                  <Details className="flex flex-col gap-2">
+                     <span className="text-[14px] font-semibold">
+                        {creatorName} <DateText className="text-[10px] ml-1">now</DateText>
+                     </span>
+                     <p className="text-[13px]">
                         {cmnt}
-                     </Text>
+                     </p>
                   </Details>
-               </Container>
+               </div>
             )
          })}
 
@@ -36,37 +37,13 @@ const Comment: React.FC<CommentProps> = ({ pic, creatorName, allComment }) => {
 export default Comment;
 
 
-const Container = styled.div`
-  display: flex;
-  gap: 10px;
-  margin: 30px 0px;
-`;
-
-const Avatar = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`;
 
 const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   color: ${({ theme }) => theme.text};
 `;
 
-const Name = styled.span`
-  font-size: 13px;
-  font-weight: 500;
-`;
 
 const DateText = styled.span`
-  font-size: 12px;
-  font-weight: 400;
   color: ${({ theme }) => theme.textSoft};
-  margin-left: 5px;
 `;
 
-const Text = styled.span`
-  font-size: 14px;
-`;
