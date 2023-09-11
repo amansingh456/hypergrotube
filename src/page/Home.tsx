@@ -10,7 +10,7 @@ import Loader from "../components/Loader";
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
-   const [page, setPage] = useState<number>(1);
+   const [page, setPage] = useState<number>(0);
    const [allData, setAllData] = useState<any[]>([]);
    const [loading, setLoading] = useState<boolean>(true);
   
@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = () => {
    };
 
    const handleLeftArrow = () => {
-      if (page === 1) {
+      if (page === 0) {
          toast({
             title: "Warning",
             description: "minimum page limit reached ..!",
